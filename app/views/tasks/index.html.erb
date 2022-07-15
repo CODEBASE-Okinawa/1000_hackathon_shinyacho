@@ -5,19 +5,19 @@
   <%= f.submit :button, "作成" %>
 <% end %>
 
-<% if !@tasks.nil %>
+<% if !@tasks.nil? %>
   <%= @tasks.each do |task| %>
     <%= if task.closed == "false" %>
-      <%= task %>
+      <%= task.content %>
     <% end %>
   <% end %>
 <% end %>
 
 <h2>終了済み</h2>
-<% if !@tasks.nil %>
+<% if !@tasks.nil? %>
   <%= @tasks.each do |task| %>
     <%= if task.closed == "true" %>
-      <%= task %>
+      <%= task.content %>
     <% end %>
   <% end %>
 <% end %>
