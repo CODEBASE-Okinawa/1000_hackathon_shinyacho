@@ -5,7 +5,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(params[:title])
+    binding.irb
     if @task.save
       redirect_to new_task_url
     else
@@ -30,6 +31,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :closed)
+    # params.require(:task).permit(:title, :closed)
   end
 end
