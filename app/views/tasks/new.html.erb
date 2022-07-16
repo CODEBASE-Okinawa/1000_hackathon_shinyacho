@@ -1,9 +1,11 @@
-<%= form_with(model: @task, local: true) do |f| %>
-  <%= f.label :content, "タスク" %>
-  <%= f.text_field :content %>
+<div class="task-form">
+  <%= form_with(model: @task, local: true) do |f| %>
+    <%# <%= f.label :content, "タスク" %>
+    <%= f.text_field :content, placeholder: "タイトルを入力･･･" %>
 
-  <%= f.submit("作成") %>
-<% end %>
+    <%= f.submit("作成") %>
+  <% end %>
+</div>
 
 <% if !@task.nil? %>
   <% @tasks.each do |task| %>
