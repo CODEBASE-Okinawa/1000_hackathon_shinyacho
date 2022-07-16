@@ -16,10 +16,10 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    if @task.closed == "false" && task_params == "true"
+    if @task.closed == false && task_params == true
       @task.update(task_params)
       redirect_to new_task_url
-    elsif @task.closed == "true" && task_params == "false"
+    elsif @task.closed == true && task_params == false
       @task.update(task_params)
       redirect_to new_task_url
     else
@@ -30,6 +30,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :closed)
+    params.require(:task).permit(:content, :closed)
   end
 end
