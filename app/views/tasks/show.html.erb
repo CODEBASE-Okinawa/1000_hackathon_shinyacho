@@ -1,0 +1,14 @@
+<h2><%= @task.content %></h2>
+
+<% if !@comments.nil? %>
+  <% @comments.each do |comment| %>
+    <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+    <%= comment.body %>
+  <% end %>
+<% end %>
+
+<%= form_with(model: @comment, local: true) do |f| %>
+  <%= f.hidden_field :task_id, value: params[:id] %>
+  <%= f.text_area :body, placeholder: "コメントを書く" %>
+  <%= f.submit("送信") %>
+<% end %>
