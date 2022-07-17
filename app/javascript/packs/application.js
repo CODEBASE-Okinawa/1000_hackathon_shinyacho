@@ -7,12 +7,6 @@ import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import * as ActiveStorage from "@rails/activestorage";
 import "channels";
-import "jquery";
-
-//= require jquery #追加
-//= require jquery_ujs #追加
-//= require jquery.turbolinks
-//= require_tree .
 
 Rails.start();
 Turbolinks.start();

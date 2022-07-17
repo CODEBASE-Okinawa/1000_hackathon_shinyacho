@@ -1,7 +1,7 @@
-$(document).on("turbolinks:load", function () {
-  $("#check").on("click", function () {
-    if ($(this).prop("checked") == true) {
-      $("#unfinished_form").submit();
-    }
-  });
-});
+// $(document).on("turbolinks:load", function () {
+//   $(function () {
+//     $("input[type=checkbox]").onclick(function () {
+//       $.post("/tasks/update", { id: $(this).data("id") });
+//     });
+//   });
+// });
