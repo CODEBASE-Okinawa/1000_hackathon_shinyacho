@@ -1,0 +1,27 @@
+<div class="task-form">
+  <%= form_with(model: @task, local: true) do |f| %>
+    <%# <%= f.label :content, "タスク" %>
+    <%= f.text_field :content, placeholder: "タイトルを入力･･･" %>
+    <%= f.hidden_field :task_list_id, value: @tasks.first.task_list_id %>
+
+    <%= f.submit("作成") %>
+  <% end %>
+</div>
+
+<% if !@tasks.nil? %>
+  <% @tasks.each do |task| %>
+    <% if task.closed == false %>
+      <%= task.content %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h2>終了済み</h2>
+
+<% if !@tasks.nil? %>
+  <% @tasks.each do |task| %>
+    <% if task.closed == true %>
+      <%= task.content %>
+    <% end %>
+  <% end %>
+<% end %>

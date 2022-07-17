@@ -4,6 +4,7 @@
   <%= form_with(model: @task, local: true) do |f| %>
     <%# <%= f.label :content, "タスク" %>
     <%= f.text_field :content, placeholder: "タイトルを入力･･･" %>
+    <%= f.hidden_field :task_list_id, value: @tasks.first.task_list_id %>
 
     <%= f.submit("作成") %>
   <% end %>

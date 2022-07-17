@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_16_023212) do
+ActiveRecord::Schema.define(version: 2022_07_16_065715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "task_lists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string "content"
     t.boolean "closed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "task_list_id", null: false
+    t.index ["task_list_id"], name: "index_tasks_on_task_list_id"
   end
 
+  add_foreign_key "tasks", "task_lists"
 end

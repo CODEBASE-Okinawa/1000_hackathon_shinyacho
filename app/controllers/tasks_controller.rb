@@ -6,8 +6,9 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+
     if @task.save
-      redirect_to new_task_url
+      redirect_to task_list_path(@task.task_list_id)
     else
       @tasks = Task.all
       render "new"
@@ -30,6 +31,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content, :closed)
+    params.require(:task).permit(:content, :closed, :task_list_id)
   end
 end
