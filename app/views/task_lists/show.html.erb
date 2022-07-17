@@ -10,7 +10,6 @@
     <% else %>
       <%= f.hidden_field :task_list_id, value: @tasks.first.task_list_id %>
     <% end %>
-
     <%= f.submit("作成") %>
   <% end %>
 </div>
@@ -21,7 +20,7 @@
       <% if task.closed == false %>
         <div class="task">
           <%= check_box_tag :closed, true, false, {"data-id" => task.id} %>
-          <label for="closed"><%= task.content %></label>
+          <label for="closed"><%= link_to "#{task.content}", task_path(task.id) %></label>
         </div>
       <% end %>
     <% end %>
@@ -36,7 +35,7 @@
       <% if task.closed == true %>
         <div class="task">
           <%= check_box_tag :closed, true, false, {"data-id" => task.id} %>
-          <label for="closed"><%= task.content %></label>
+          <label for="closed"><%= link_to "#{task.content}", task_path(task.id) %></label>
         </div>
       <% end %>
     <% end %>

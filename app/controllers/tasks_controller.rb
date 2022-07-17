@@ -6,13 +6,18 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-
     if @task.save
       redirect_to task_list_path(@task.task_list_id)
     else
       @tasks = Task.all
-      render "new"
+      redirect_to task_list_path(task_params["task_list_id"])
     end
+  end
+
+  def show
+    @task = Task.find(params[:id])
+    @comments = Comment.all.where(task_id: params[:id])
+    @comment = Comment.new
   end
 
   def update
