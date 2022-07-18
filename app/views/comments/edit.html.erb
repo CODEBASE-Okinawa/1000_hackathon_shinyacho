@@ -1,0 +1,15 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<%= form_with(model: @comment, local: true) do |f| %>
+  <div>
+    <p>
+      <%= @comment.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
+    </p>
+    <p>
+      <%= f.text_field :body, value: "#{@comment.body}" %>
+    </p>
+  </div>
+  <%= f.submit("編集") %>
+<% end %>
