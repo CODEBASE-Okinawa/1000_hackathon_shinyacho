@@ -41,23 +41,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%# <script type="text/javascript">
-    $(function() {
-        $("input[type=checkbox]").on("click", function() {
-            $.post('/tasks/update', {id: $(this).data('id')});
-            if $(this).prop("checked") {
-              $(this).removeAttr("checked").prop("checked", false).change();
-            } else {
-              $(this).addAttr("checked").prop("checked", true).change();
-            }
-        });
-    });
-</script> %>
-  <script type="text/javascript">
-    $(function() {
-        $("input[type=checkbox]").click(function() {
-            $.post('/tasks/update', {id: $(this).data('id')});
-        });
-    });
-  </script>
