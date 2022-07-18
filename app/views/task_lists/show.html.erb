@@ -1,27 +1,63 @@
+<%= javascript_pack_tag 'tasks/index' %>
+<h2><%= @task_list.name %></h2>
+
 <div class="task-form">
   <%= form_with(model: @task, local: true) do |f| %>
     <%# <%= f.label :content, "タスク" %>
     <%= f.text_field :content, placeholder: "タイトルを入力･･･" %>
-    <%= f.hidden_field :task_list_id, value: @tasks.first.task_list_id %>
-
+    <% if @tasks.empty? %>
+      <%= f.hidden_field :task_list_id, value: params[:id] %>
+    <% else %>
+      <%= f.hidden_field :task_list_id, value: @tasks.first.task_list_id %>
+    <% end %>
     <%= f.submit("作成") %>
   <% end %>
 </div>
 
-<% if !@tasks.nil? %>
-  <% @tasks.each do |task| %>
-    <% if task.closed == false %>
-      <%= task.content %>
+<div class="task-list">
+  <% if !@tasks.nil? %>
+    <% @tasks.each do |task| %>
+      <% if task.closed == false %>
+        <div class="task">
+          <%= check_box_tag :closed, true, false, {"data-id" => task.id} %>
+          <label for="closed"><%= link_to "#{task.content}", task_path(task.id) %></label>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
 
 <h2>終了済み</h2>
 
-<% if !@tasks.nil? %>
-  <% @tasks.each do |task| %>
-    <% if task.closed == true %>
-      <%= task.content %>
+<div class="task-list">
+  <% if !@tasks.nil? %>
+    <% @tasks.each do |task| %>
+      <% if task.closed == true %>
+        <div class="task">
+          <%= check_box_tag :closed, true, false, {"data-id" => task.id} %>
+          <label for="closed"><%= link_to "#{task.content}", task_path(task.id) %></label>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
+
+<%# <script type="text/javascript">
+    $(function() {
+        $("input[type=checkbox]").on("click", function() {
+            $.post('/tasks/update', {id: $(this).data('id')});
+            if $(this).prop("checked") {
+              $(this).removeAttr("checked").prop("checked", false).change();
+            } else {
+              $(this).addAttr("checked").prop("checked", true).change();
+            }
+        });
+    });
+</script> %>
+  <script type="text/javascript">
+    $(function() {
+        $("input[type=checkbox]").click(function() {
+            $.post('/tasks/update', {id: $(this).data('id')});
+        });
+    });
+  </script>

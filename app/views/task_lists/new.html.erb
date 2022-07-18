@@ -8,6 +8,10 @@
 </div>
 
 <h2>タスクリスト一覧</h2>
-<% @task_lists.each do |task_list| %>
-  <%= link_to "#{task_list.name}", task_list_path(task_list) %>
-<% end %>
+<ul class="list-group">
+  <% @task_lists.each do |task_list| %>
+    <li>
+      <%= link_to "#{task_list.name}", task_list_path(task_list) %>
+    </li>
+  <% end %>
+</ul>
