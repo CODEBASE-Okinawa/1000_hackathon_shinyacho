@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "/tasks/show", to: "tasks#show"
   post "task_list_path", to: "tasks#create"
   post "/tasks/update", to: "tasks#update"
+  post "/comments/update", to: "comments#update"
   root "task_lists#new"
   resources :tasks
   resources :task_lists
