@@ -1,15 +1,17 @@
-<header class="navbar navbar-inverse">
-  <div class="container">
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Sign up",   '/signup' %></li>
+<header>
+  <div class="wrapper">
+    <ul class="header-title">
+      <li><%= link_to "タスク管理app", root_path %></li>
+    </ul>
+    <ul class="header-list">
+      <% if logged_in? %>
+        <%# マイページへ遷移するようにする %>
+        <li><%= link_to "ようこそ #{@current_user.name} 様", '#' %></li>
+        <li><%= link_to "Log out", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign up", '/signup' %></li>
         <li><%= link_to "Log in", '/login' %></li>
-        <% if logged_in? %>
-          </li>
-        <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
+      <% end %>
+    </ul>
   </div>
 </header>

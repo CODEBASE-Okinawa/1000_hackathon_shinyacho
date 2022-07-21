@@ -1,3 +1,56 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+header {
+  background-color: #444;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+
+  .wrapper {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .header-title {
+      width: 30%;
+
+      li {
+        list-style: none;
+        line-height: 75px;
+
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: 25px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .header-list {
+      width: 70%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 75px;
+
+      li {
+        list-style: none;
+        line-height: 75px;
+
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: 17.5px;
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}
